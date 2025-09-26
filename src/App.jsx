@@ -6,7 +6,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import Menu from './componentes/Menu'
 import Home from './componentes/telas/Home'
 import Sobre from "./componentes/telas/Sobre";
-import Categoria from "./componentes/telas/categorias/Categoria";
+import Categoria from "./componentes/telas/categoria/Categoria";
 
 const router = createBrowserRouter([
   {

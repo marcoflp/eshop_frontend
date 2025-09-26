@@ -1,7 +1,8 @@
-const Sobre = () => {
-    <div>
-        <h1>Sobre</h1>
-        <h2>Sistema desenvolvido na Disciplina de PW</h2>
-    </div>
+const Home = () => {
+    return (
+        <div>
+            <h1>Sistema desenvolvido em PW</h1>
+        </div>
+    );
 }
-export default Sobre;
+export default Home;
