@@ -1,6 +1,8 @@
 import { useContext } from 'react'
 import Alerta from '../../comuns/Alerta';
 import CategoriaContext from './CategoriaContext';
+import CampoEntrada from '../../comuns/CampoEntrada';
+import Dialogo from '../../comuns/Dialogo';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -20,25 +22,26 @@ function Formulario() {
             </Modal.Header>
             <form id="formulario" onSubmit={acaoCadastrar}>
                 <Modal.Body>
-                    <Container>
-                        <Row>
-                            <Alerta alerta={alerta} />
-                            <Col xs={12} md={12}>
-                                <FloatingLabel controlId="txtCodido" label="Código" className="mb-3">
-                                    <Form.Control type="text" readOnly name="codigo"
-                                        value={objeto.codigo}
-                                        onChange={handleChange} />
-                                </FloatingLabel>
-                            </Col>
-                            <Col xs={12} md={12}>
-                                <FloatingLabel controlId="txtNome" label="Nome" className="mb-3">
-                                    <Form.Control type="text" required name="nome"
-                                        value={objeto.nome}
-                                        onChange={handleChange} placeholder="Informe o nome" />
-                                </FloatingLabel>
-                            </Col>
-                        </Row>
-                    </Container>
+                    <Dialogo id="modalEdicao" titulo="Categoria"
+                        idform="formulario" acaoCadastrar={acaoCadastrar}
+                        exibirForm={exibirForm} setExibirForm={setExibirForm}>
+                        <Alerta alerta={alerta} />
+                        <Col xs={12} md={12}>
+                            <CampoEntrada value={objeto.codigo}
+                                id="txtCodido" name="codigo" label="Código"
+                                tipo="number" onchange={handleChange}
+                                readonly={true}
+                                maxCaracteres={5} />
+                        </Col>
+                        <Col xs={12} md={12}>
+                            <CampoEntrada value={objeto.nome}
+                                id="txtNome" name="nome" label="Nome"
+                                tipo="text" onchange={handleChange}
+                                msgvalido="OK certo" msginvalido="Informe o nome"
+                                requerido={true} readonly={false}
+                                maxCaracteres={40} />
+                        </Col>
+                    </Dialogo>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setExibirForm(false)}>
